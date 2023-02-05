@@ -190,24 +190,18 @@ public class JobApplication {
 	    check.click();
 
 		
-		// Upload resume
-		//WebElement uploadField = driver.findElement(By.xpath("(//lyte-file-message[contains(@class,'lyteFileUpdMsgWrap')])[2]"));
-		//uploadField.click();
-	    //uploadField.sendKeys("C:\\Users\\hp\\eclipse-workspace\\NumadicTest\\src\\test\\resources\\excel\\Saksham_Chaudhary.pdf");
+		//Upload resume
+		WebElement uploadField = driver.findElement(By.xpath("(//lyte-file-message[contains(@class,'lyteFileUpdMsgWrap')])[2]"));
+		uploadField.click();
+	    uploadField.sendKeys("C:\\Users\\hp\\eclipse-workspace\\NumadicTest\\src\\test\\resources\\excel\\Saksham_Chaudhary.pdf");
 
 	    //click submit button
 	    WebElement submit = driver.findElement(By.xpath("//lyte-yield[normalize-space()='Submit Application']"));
 	    submit.click();
-	    
-	
-		
-		
-		
-		// Capture screenshot
-	    
+	      
 
-       // driver.manage().window().setSize(new Dimension((int)10, (int)10));
-        
+   
+        // Capture screenshot
 	    File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileHandler.copy(screenshot, new File("C:\\Users\\hp\\eclipse-workspace\\NumadicTest\\src\\test\\resources\\excel\\screenshot.png"));
@@ -226,15 +220,15 @@ public class JobApplication {
             System.out.println("Test case 1: Empty value - Failed");
         }
 
-     // Negative test case 2: Special characters
-//        driver.findElement(By.xpath("//span[normalize-space()='First Name cannot be empty.']")).sendKeys("!@#$%^&*");
-//        driver.findElement(By.id("submit-button")).click();
-//        errorMessage = driver.findElement(By.id("error-message")).getText();
-//        if (errorMessage.equals("Special characters are not allowed")) {
-//            System.out.println("Test case 2: Special characters - Passed");
-//        } else {
-//            System.out.println("Test case 2: Special characters - Failed");
-//        }
+    // Negative test case 2: Special characters
+       driver.findElement(By.xpath("//span[normalize-space()='First Name cannot be empty.']")).sendKeys("!@#$%^&*");
+       driver.findElement(By.id("submit-button")).click();
+       errorMessage = driver.findElement(By.id("error-message")).getText();
+       if (errorMessage.equals("Special characters are not allowed")) {
+           System.out.println("Test case 2: Special characters - Passed");
+       } else {
+           System.out.println("Test case 2: Special characters - Failed");
+       }
 		
 
 		driver.quit();
